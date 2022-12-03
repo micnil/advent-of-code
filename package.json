@@ -9,6 +9,8 @@
   },
   "private": true,
   "dependencies": {
+    "clipboardy": "^3.0.0",
+    "commander": "^9.4.1",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
