@@ -9,21 +9,27 @@
   },
   "private": true,
   "dependencies": {
+    "@swc/helpers": "~0.4.11",
     "clipboardy": "^v2.3.0",
     "commander": "^9.4.1",
-    "tslib": "^2.4.1"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@nrwl/cli": "15.2.4",
+    "@nrwl/esbuild": "15.2.4",
     "@nrwl/eslint-plugin-nx": "15.2.4",
     "@nrwl/jest": "15.2.4",
     "@nrwl/linter": "15.2.4",
     "@nrwl/node": "15.2.4",
     "@nrwl/workspace": "15.2.4",
+    "@swc/cli": "~0.1.55",
+    "@swc/core": "^1.2.173",
+    "@swc/jest": "0.2.20",
     "@types/jest": "28.1.1",
-    "@types/node": "18.7.1",
+    "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
+    "esbuild": "^0.15.7",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
     "jest": "28.1.1",
@@ -35,4 +41,3 @@
     "typescript": "~4.8.2"
   }
 }
-

@@ -16,7 +16,8 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@advent-of-code/day-1": ["libs/day-1/src/index.ts"]
+      "@advent-of-code/day-1": ["libs/day-1/src/index.ts"],
+      "@advent-of-code/day-2": ["libs/day-2/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
