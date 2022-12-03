@@ -22,6 +22,8 @@ const solve = (args: Args): string => {
   switch(args.day) {
     case 1:
       return runOneOrTwo(args, solveD1P1, solveD1P2);
+    default:
+      throw new Error(`args.day: ${args.day} is either not implemented yet or not a valid day`);
   }
 }
 
