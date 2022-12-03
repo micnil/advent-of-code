@@ -1,5 +1,5 @@
 import { solveD1P1, solveD1P2 } from '@advent-of-code/day-1';
-import clipboard from 'clipboardy';
+import { readSync } from 'clipboardy';
 import { Command } from 'commander';
 
 type Solver = (input: string[]) => string
@@ -38,15 +38,14 @@ program.command('solve')
   .argument('<day>', 'day to solve')
   .option('-p, --problem <number>', 'Problem 1 or 2', '1')
   .action((dayStr, options) => {
-    console.log(options)
-    const input = clipboard.readSync().split(/[\r\n]+/);
+    const input = readSync().split(/\r\n|\r|\n/);
     const args: Args = {
       day: parseInt(dayStr),
-      problem: options.problem,
+      problem: parseInt(options.problem),
       input,
     }
-
-    solve(args);
+    const result = solve(args)
+    console.log(result);
   });
 
 program.parse();

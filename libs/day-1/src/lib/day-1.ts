@@ -12,9 +12,6 @@ const iterateSums = function* (input: string[]) {
 };
 
 export const solveD1P1 = (lines: string[]): string => {
-  return '';
-};
-export const solveD1P2 = (lines: string[]): string => {
   let maxCalories = 0;
   for (const calories of iterateSums(lines)) {
     if (calories > maxCalories) {
@@ -23,4 +20,10 @@ export const solveD1P2 = (lines: string[]): string => {
   }
 
   return maxCalories.toString();
+};
+
+export const solveD1P2 = (lines: string[]): string => {
+  const top3 = [...iterateSums(lines)].sort().slice(-3);
+  const sum = top3.reduce((acc, curr) => acc + curr, 0);
+  return sum.toString();
 };
