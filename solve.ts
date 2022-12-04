@@ -1,4 +1,4 @@
-import { readSync } from 'clipboardy';
+import clipboard from 'clipboardy';
 import { program } from 'commander';
 import * as fs from 'fs';
 import { solveD1P1, solveD1P2 } from './src/day-1';
@@ -49,7 +49,7 @@ program
       ? fs
           .readFileSync(options.input, { encoding: 'utf8', flag: 'r' })
           .split(/\r\n|\r|\n/)
-      : readSync().split(/\r\n|\r|\n/);
+      : clipboard.readSync().split(/\r\n|\r|\n/);
     if (input[input.length - 1] === '') {
       input.pop();
     }
