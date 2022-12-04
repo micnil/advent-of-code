@@ -1,5 +1,5 @@
 import { readSync } from 'clipboardy';
-import { Command } from 'commander';
+import { program } from 'commander';
 import * as fs from 'fs';
 import { solveD1P1, solveD1P2 } from './day-1';
 import { solveD2P1, solveD2P2 } from './day-2';
@@ -39,13 +39,10 @@ const solve = (args: Args): Solution => {
   }
 };
 
-const program = new Command();
-
-program.name('Advent of code').description('Solutions to advent of code');
+//program.name('Advent of code').description('Solutions to advent of code');
 
 program
-  .command('solve')
-  .description('If no file is provided, ')
+  .description('If no file path is provided (-i), then input will be taken from the clipboard')
   .option('-i, --input <string>', 'input file path')
   .option('-d, --day <number>', 'Day 1-25', '1')
   .action((options) => {
