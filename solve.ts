@@ -1,10 +1,10 @@
 import { readSync } from 'clipboardy';
 import { program } from 'commander';
 import * as fs from 'fs';
-import { solveD1P1, solveD1P2 } from './day-1';
-import { solveD2P1, solveD2P2 } from './day-2';
-import { solveD3P1, solveD3P2 } from './day-3';
-import { solveD4P1, solveD4P2 } from './day-4';
+import { solveD1P1, solveD1P2 } from './src/day-1';
+import { solveD2P1, solveD2P2 } from './src/day-2';
+import { solveD3P1, solveD3P2 } from './src/day-3';
+import { solveD4P1, solveD4P2 } from './src/day-4';
 
 type Solution = {
   part1: string,
