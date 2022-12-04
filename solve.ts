@@ -39,8 +39,6 @@ const solve = (args: Args): Solution => {
   }
 };
 
-//program.name('Advent of code').description('Solutions to advent of code');
-
 program
   .description('If no file path is provided (-i), then input will be taken from the clipboard')
   .option('-i, --input <string>', 'input file path')
