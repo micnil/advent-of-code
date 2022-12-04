@@ -1,0 +1,9 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "strict": true,
+    "target": "ES2020",
+    "moduleResolution": "node"
+  },
+  "exclude": ["node_modules"]
+}
