@@ -1,4 +1,5 @@
 import { solveD1P1, solveD1P2 } from '@advent-of-code/day-1';
+import { solveD2P1, solveD2P2 } from '@advent-of-code/day-2';
 import { readSync } from 'clipboardy';
 import { Command } from 'commander';
 
@@ -22,6 +23,8 @@ const solve = (args: Args): string => {
   switch(args.day) {
     case 1:
       return runOneOrTwo(args, solveD1P1, solveD1P2);
+    case 2:
+      return runOneOrTwo(args, solveD2P1, solveD2P2);
     default:
       throw new Error(`args.day: ${args.day} is either not implemented yet or not a valid day`);
   }
