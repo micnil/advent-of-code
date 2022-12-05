@@ -12,10 +12,6 @@ type Move = {
 
 type MoveProcedure = Move[];
 
-const iterateLetterWithColumn = function* (
-  input: string[]
-): Generator<[number, Crate]> {};
-
 const findEndOfStartStateIndex = (lines: string[]) =>
   lines.findIndex((line) => line === '');
 
