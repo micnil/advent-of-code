@@ -8,9 +8,9 @@ import { solveD4P1, solveD4P2 } from './src/day-4';
 import { solveD5P1, solveD5P2 } from './src/day-5';
 
 type Solution = {
-  part1: string,
-  part2: string,
-}
+  part1: string;
+  part2: string;
+};
 type Solver = (input: string[]) => string;
 type Args = {
   day: number;
@@ -21,7 +21,7 @@ const run = (args: Args, solverOne: Solver, solverTwo: Solver): Solution => {
   return {
     part1: solverOne(args.input),
     part2: solverTwo(args.input),
-  }
+  };
 };
 const solve = (args: Args): Solution => {
   switch (args.day) {
@@ -33,8 +33,8 @@ const solve = (args: Args): Solution => {
       return run(args, solveD3P1, solveD3P2);
     case 4:
       return run(args, solveD4P1, solveD4P2);
-      case 4:
-        return run(args, solveD5P1, solveD5P2);
+    case 5:
+      return run(args, solveD5P1, solveD5P2);
     default:
       throw new Error(
         `args.day: ${args.day} is either not implemented yet or not a valid day`
@@ -43,7 +43,9 @@ const solve = (args: Args): Solution => {
 };
 
 program
-  .description('If no file path is provided (-i), then input will be taken from the clipboard')
+  .description(
+    'If no file path is provided (-i), then input will be taken from the clipboard'
+  )
   .option('-i, --input <string>', 'input file path')
   .option('-d, --day <number>', 'Day 1-25', '1')
   .action((options) => {
@@ -63,7 +65,7 @@ program
 
     const solution = solve(args);
     console.log('Solution part 1: ', solution.part1);
-    console.log('Solution part 1: ', solution.part2);
+    console.log('Solution part 2: ', solution.part2);
   });
 
 program.parse();
