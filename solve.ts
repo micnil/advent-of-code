@@ -36,7 +36,7 @@ const solve = (args: Args): Solution => {
       return run(args, solveD4P1, solveD4P2);
     case 5:
       return run(args, solveD5P1, solveD5P2);
-    case 5:
+    case 6:
       return run(args, solveD6P1, solveD6P2);
     default:
       throw new Error(
