@@ -42,7 +42,7 @@ const solve = (args: Args): Solution => {
       return run(args, solveD6P1, solveD6P2);
     case 7:
       return run(args, solveD7P1, solveD7P2);
-    case 7:
+    case 8:
       return run(args, solveD8P1, solveD8P2);
     default:
       throw new Error(
