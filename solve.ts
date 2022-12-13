@@ -2,6 +2,7 @@ import clipboard from 'clipboardy';
 import { program } from 'commander';
 import * as fs from 'fs';
 import { solveD1P1, solveD1P2 } from './src/day-1';
+import { solveD10P1, solveD10P2 } from './src/day-10';
 import { solveD2P1, solveD2P2 } from './src/day-2';
 import { solveD3P1, solveD3P2 } from './src/day-3';
 import { solveD4P1, solveD4P2 } from './src/day-4';
@@ -47,6 +48,8 @@ const solve = (args: Args): Solution => {
       return run(args, solveD8P1, solveD8P2);
     case 9:
       return run(args, solveD9P1, solveD9P2);
+    case 10:
+      return run(args, solveD10P1, solveD10P2);
     default:
       throw new Error(
         `args.day: ${args.day} is either not implemented yet or not a valid day`
