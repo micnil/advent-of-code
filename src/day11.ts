@@ -1,9 +1,10 @@
-type Operation = () => void;
+type Operation = (modulo: number) => void;
 type Operators = '*' | '+';
 type Throw = (worryLevel: number) => number;
 type Monkey = {
   id: number;
   items: number[];
+  divisor: number;
   inspectCount(): number;
   getHolding(): number;
   hasItems(): boolean;
@@ -67,8 +68,9 @@ const toMonkey = (lines: string[]): Monkey => {
     let inspectCount = 0;
     return {
       id,
+      divisor: divideNumber,
       hasItems: () => !!items.length,
-      inspect: () => {
+      inspect: (mod: number) => {
         inspectCount++;
         inspecting = items.shift() ?? 0;
         const number = operatorNumber === 'old' ? inspecting : operatorNumber;
@@ -78,6 +80,7 @@ const toMonkey = (lines: string[]): Monkey => {
         } else {
           inspecting = inspecting + number;
         }
+        inspecting %= mod;
       },
       inspectCount: () => inspectCount,
       getHolding: () => inspecting,
@@ -114,13 +117,18 @@ const toMonkeys = (lines: string[]): Monkey[] => {
   return [...chunkBy(lines, (line) => line === '')].map(toMonkey);
 };
 
-export const solveD11P1 = (lines: string[]): string => {
-  const monkeys = toMonkeys(lines);
-  for (let i = 0; i < monkeys.length * 20; i++) {
+const solve = (
+  monkeys: Monkey[],
+  rounds: number,
+  worryReducer: number
+): string => {
+  // Chinese remainder theorem
+  const monkeyMod = monkeys.reduce((acc, monkey) => acc * monkey.divisor, 1);
+  for (let i = 0; i < monkeys.length * rounds; i++) {
     const monkey = monkeys[i % monkeys.length];
     while (monkey.hasItems()) {
-      monkey.inspect();
-      const id = monkey.throw(3);
+      monkey.inspect(monkeyMod);
+      const id = monkey.throw(worryReducer);
       const monkeyCatch = monkeys.find((monkey) => monkey.id === id);
       monkeyCatch?.items.push(monkey.getHolding());
     }
@@ -133,23 +141,12 @@ export const solveD11P1 = (lines: string[]): string => {
   return monkeyBusiness.toString();
 };
 
+export const solveD11P1 = (lines: string[]): string => {
+  const monkeys = toMonkeys(lines);
+  return solve(monkeys, 20, 3);
+};
+
 export const solveD11P2 = (lines: string[]): string => {
   const monkeys = toMonkeys(lines);
-  for (let i = 0; i < monkeys.length * 10_000; i++) {
-    const monkey = monkeys[i % monkeys.length];
-    while (monkey.hasItems()) {
-      monkey.inspect();
-      const id = monkey.throw(1);
-      const monkeyCatch = monkeys.find((monkey) => monkey.id === id);
-      monkeyCatch?.items.push(monkey.getHolding());
-    }
-  }
-
-  monkeys.sort(
-    (monkey1, monkey2) => monkey2.inspectCount() - monkey1.inspectCount()
-  );
-  const monkeyBusiness = monkeys[0].inspectCount() * monkeys[1].inspectCount();
-  // Incorrect: 14495316750
-  // Need to handle large number math?
-  return monkeyBusiness.toString();
+  return solve(monkeys, 10_000, 1);
 };
