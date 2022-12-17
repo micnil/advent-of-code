@@ -71,14 +71,12 @@ const toMonkey = (lines: string[]): Monkey => {
       inspect: () => {
         inspectCount++;
         inspecting = items.shift() ?? 0;
+        const number = operatorNumber === 'old' ? inspecting : operatorNumber;
+
         if (operator === '*') {
-          inspecting =
-            inspecting *
-            (operatorNumber === 'old' ? inspecting : operatorNumber);
+          inspecting = inspecting * number;
         } else {
-          inspecting =
-            inspecting +
-            (operatorNumber === 'old' ? inspecting : operatorNumber);
+          inspecting = inspecting + number;
         }
       },
       inspectCount: () => inspectCount,
@@ -137,7 +135,7 @@ export const solveD11P1 = (lines: string[]): string => {
 
 export const solveD11P2 = (lines: string[]): string => {
   const monkeys = toMonkeys(lines);
-  for (let i = 0; i < monkeys.length * 10000; i++) {
+  for (let i = 0; i < monkeys.length * 10_000; i++) {
     const monkey = monkeys[i % monkeys.length];
     while (monkey.hasItems()) {
       monkey.inspect();
