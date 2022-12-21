@@ -53,9 +53,6 @@ const searchNext = (terrain: number[][], startingPath: Path): Path[] => {}
 
 export const solveD12P1 = (lines: string[]): string => {
   const map = toMap(lines);
-  const startPath: Path = {
-    coord: map.startPosition,
-  };
   return '';
 };
 

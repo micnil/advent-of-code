@@ -13,6 +13,7 @@ import { solveD8P1, solveD8P2 } from './src/day-8';
 import { solveD9P1, solveD9P2 } from './src/day-9';
 import { solveD11P1, solveD11P2 } from './src/day11';
 import { solveD12P1, solveD12P2 } from './src/day12';
+import { solveD20P1, solveD20P2 } from './src/day20';
 
 type Solution = {
   part1: string;
@@ -56,6 +57,8 @@ const solve = (args: Args): Solution => {
       return run(args, solveD11P1, solveD11P2);
     case 12:
       return run(args, solveD12P1, solveD12P2);
+    case 20:
+      return run(args, solveD20P1, solveD20P2);
     default:
       throw new Error(
         `args.day: ${args.day} is either not implemented yet or not a valid day`
