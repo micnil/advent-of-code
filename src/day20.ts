@@ -19,19 +19,18 @@ const move = (numbers: NumAndOrder[], order: number): NumAndOrder[] => {
       : signedNewIndexWrapped;
   newIndex = newIndex === 0 ? origLength - 1 : newIndex;
 
-  const copy = [...numbers];
-  copy.splice(currIndex, 1);
-  copy.splice(newIndex, 0, fromNum);
-  return copy;
+  numbers.splice(currIndex, 1);
+  numbers.splice(newIndex, 0, fromNum);
+  return numbers;
 };
 
 const mixing = (encryptedNums: number[], times: number): number[] => {
-  let nums: NumAndOrder[] = encryptedNums.map((num, i) => ({
+  const nums: NumAndOrder[] = encryptedNums.map((num, i) => ({
     num,
     order: i,
   }));
   for (let i = 0; i < encryptedNums.length * times; i++) {
-    nums = move(nums, i % encryptedNums.length);
+    move(nums, i % encryptedNums.length);
   }
 
   return nums.map((num) => num.num);
